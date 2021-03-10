@@ -54,7 +54,7 @@ public class LugarController {
 	
 	@PutMapping(value="/{id}")
 	public ResponseEntity<LugarDTO> update(@Valid @PathVariable Integer id, @RequestBody LugarDTO objDTO) {
-		Lugar newObj = service.create(id, objDTO);
+		Lugar newObj = service.update(id, objDTO);
 		return ResponseEntity.ok().body(new LugarDTO(newObj));
 	}
 	

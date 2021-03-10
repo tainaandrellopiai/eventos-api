@@ -30,9 +30,8 @@ public class Lugar implements Serializable {
 	@Length(min=3,max=100,message="o campo nome deve ter entre 3 e 100 caracteres")
 	private String nome;
 	
-	@NotEmpty(message="campo capacidade é requerido")
-	@Length(message="o campo capacidade deve ter um número")
 	@Column(name="capacidade")
+	//@NotEmpty(message="campo capacidade é requerido")
 	private int capacidade;
 
 	@OneToMany(mappedBy = "local")

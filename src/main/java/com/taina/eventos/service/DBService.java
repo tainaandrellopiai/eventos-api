@@ -3,12 +3,14 @@ package com.taina.eventos.service;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.taina.eventos.domain.Evento;
 import com.taina.eventos.domain.Lugar;
 import com.taina.eventos.repository.EventoRepository;
 import com.taina.eventos.repository.LugarRepository;
 
+@Service
 public class DBService {
 	
 	@Autowired

@@ -9,7 +9,7 @@ import com.taina.eventos.domain.Lugar;
 import com.taina.eventos.dtos.LugarDTO;
 import com.taina.eventos.repository.LugarRepository;
 import com.taina.eventos.service.exceptions.ObjectNotFoundException;
-//import com.taina.eventos.service.exceptions.DataIntegrityViolationException;
+
 @Service
 public class LugarService {
 
@@ -29,7 +29,7 @@ public class LugarService {
 		return repository.save(obj);
 	}
 
-	public Lugar create(Integer id, LugarDTO objDTO) {
+	public Lugar update(Integer id, LugarDTO objDTO) {
 		Lugar obj = findById(id);
 		obj.setNome(objDTO.getNome());
 		obj.setCapacidade(objDTO.getCapacidade());
