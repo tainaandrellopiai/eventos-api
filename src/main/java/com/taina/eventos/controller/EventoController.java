@@ -28,7 +28,7 @@ import com.taina.eventos.dtos.EventoDTO;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value="/busca_evento")
+@RequestMapping(value="/eventos")
 public class EventoController {
 	
 	@Autowired
@@ -41,7 +41,7 @@ public class EventoController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<EventoDTO>> findAll(@RequestParam(value="local", defaultValue="0") Integer id_lugar) {
+	public ResponseEntity<List<EventoDTO>> findAll(@RequestParam(value="lugar", defaultValue="0") Integer id_lugar) {
 		List<Evento> list = service.findAll(id_lugar);
 		List<EventoDTO> listDTO = list.stream().map(obj -> new EventoDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);
@@ -60,7 +60,7 @@ public class EventoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Evento> create(@RequestParam(value="local", defaultValue="0") Integer id_lugar, @Valid @RequestBody Evento obj) {
+	public ResponseEntity<Evento> create(@RequestParam(value="lugar", defaultValue="0") Integer id_lugar, @Valid @RequestBody Evento obj) {
 		Evento newObj = service.create(id_lugar, obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/eventos/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();

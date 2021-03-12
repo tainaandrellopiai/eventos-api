@@ -29,20 +29,20 @@ public class Evento implements Serializable {
 	@Length(min=3,max=100,message="o campo nome deve ter entre 3 e 100 caracteres")
 	private String nome;
 	
-	@NotEmpty(message="campo lugar é requerido")
-	@Length(min=3,max=100,message="o campo lugar deve ter entre 3 e 100 caracteres")
-	private String lugar;
+	@NotEmpty(message="campo tipo é requerido")
+	@Length(min=3,max=100,message="o campo tipo deve ter entre 3 e 100 caracteres")
+	private String tipo;
 	
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="local_id")
+	@JoinColumn//(name="local_id")
 	private Lugar local;
 
-	public Evento(Integer id, String nome, String lugar, Lugar local) {
+	public Evento(Integer id, String nome, String tipo, Lugar local) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.lugar = lugar;
+		this.tipo = tipo;
 		this.local = local;
 	}
 
@@ -66,12 +66,12 @@ public class Evento implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getLugar() {
-		return lugar;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setLugar(String lugar) {
-		this.lugar = lugar;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public Lugar getLocal() {

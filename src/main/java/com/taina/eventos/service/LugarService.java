@@ -15,15 +15,17 @@ public class LugarService {
 
 	@Autowired
 	private LugarRepository repository;
+
 	public Lugar findById(Integer id) {
 		Optional<Lugar> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Lugar.class.getName()));
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Lugar.class.getName()));
 	}
-		
+
 	public List<Lugar> findAll() {
 		return repository.findAll();
 	}
-	
+
 	public Lugar create(Lugar obj) {
 		obj.setId(null);
 		return repository.save(obj);
@@ -35,13 +37,14 @@ public class LugarService {
 		obj.setCapacidade(objDTO.getCapacidade());
 		return repository.save(obj);
 	}
-	
+
 	public void delete(Integer id) {
 		findById(id);
 		try {
 			repository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
-			throw new com.taina.eventos.service.exceptions.DataIntegrityViolationException ("Lugar não pode ser deletado! Possui eventos associados");
+			throw new com.taina.eventos.service.exceptions.DataIntegrityViolationException(
+					"Lugar não pode ser deletado! Possui eventos associados");
 		}
 	}
 }

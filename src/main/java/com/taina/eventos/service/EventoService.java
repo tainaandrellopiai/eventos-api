@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.taina.eventos.domain.Evento;
 import com.taina.eventos.domain.Lugar;
 import com.taina.eventos.repository.EventoRepository;
+import com.taina.eventos.service.exceptions.ObjectNotFoundException;
 
 @Service
 public class EventoService {
@@ -22,7 +23,7 @@ public class EventoService {
 		
 		public Evento findById(Integer id) {
 			Optional<Evento> obj = repository.findById(id);
-			return obj.orElse(null);
+			return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!" + id + ", Tipo " + Evento.class.getName()));
 		}
 		
 		public List<Evento> findAll(Integer id_lugar) {
@@ -38,7 +39,7 @@ public class EventoService {
 
 		private void updateData(Evento newObj, Evento obj) {
 			newObj.setNome(obj.getNome());
-			newObj.setLugar(obj.getLugar());			
+			newObj.setTipo(obj.getTipo());			
 		}
 		
 		public Evento create(Integer id_lugar, Evento obj) {

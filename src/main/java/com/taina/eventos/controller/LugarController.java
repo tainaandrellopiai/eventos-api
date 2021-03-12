@@ -26,7 +26,7 @@ import com.taina.eventos.dtos.LugarDTO;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value="/busca_lugar")
+@RequestMapping(value="/lugares")
 public class LugarController {
 	
 	@Autowired

@@ -18,9 +18,9 @@ public class EventoDTO implements Serializable {
 	@Length(min=3,max=100,message="o campo nome deve ter entre 3 e 100 caracteres")
 	private String nome;
 	
-	@NotEmpty(message="campo lugar é requerido")
-	@Length(min=3,max=100,message="o campo lugar deve ter entre 3 e 100 caracteres")
-	private String lugar;
+	@NotEmpty(message="campo tipo é requerido")
+	@Length(min=3,max=100,message="o campo tipo deve ter entre 3 e 100 caracteres")
+	private String tipo;
 	
 	public EventoDTO() {
 		super();
@@ -30,7 +30,7 @@ public class EventoDTO implements Serializable {
 		super();
 		this.id = obj.getId();
 		this.nome = obj.getNome();
-		this.lugar = obj.getLugar();
+		this.tipo = obj.getTipo();
 	}
 
 	public Integer getId() {
@@ -48,12 +48,12 @@ public class EventoDTO implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public String getLugar() {
-		return lugar;
+	
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setLugar(String lugar) {
-		this.lugar = lugar;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 }
